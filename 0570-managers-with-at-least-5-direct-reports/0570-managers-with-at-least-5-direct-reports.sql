@@ -1,11 +1,11 @@
 # Write your MySQL query statement below
-SELECT e.name
+SELECT name
 FROM Employee e
-JOIN (
+WHERE id IN (
     SELECT managerID
     FROM Employee
     WHERE managerID IS NOT NULL
     GROUP BY managerID
     HAVING count(*) >= 5
-    ) m
-ON e.id = m.managerID
+    )
+
